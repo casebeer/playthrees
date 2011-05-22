@@ -25,7 +25,7 @@ function forEach(a, f) {
 }
 
 function map(f, a) {
-	var result = []
+	var result = [];
 	forEach(a, function(e) {
 		result.push(f(e));
 	}); 
