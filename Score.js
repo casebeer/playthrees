@@ -1,9 +1,14 @@
 function Score(config) {
-	var options = {zero:3}
+	var options = {zeroVal:3};
 	}
 
-Score.prototype.caculateScore = function(dice) {
+Score.prototype.calculateScore = function(dice) {
+	// todo: value is coming up undefined!?
 	var score;
-	reduce(function(x) {
-	}, this.score)
+	reduce(function(d) {
+		if (d.value != options.zeroVal) {
+			this.score += d.value;
+		}
+	}, this.score, dice);
 }
+
