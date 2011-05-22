@@ -4,6 +4,6 @@ function Score(config) {
 
 Score.prototype.caculateScore = function(dice) {
 	var score;
-	reduce(function() {
+	reduce(function(x) {
 	}, this.score)
 }
