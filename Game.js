@@ -10,24 +10,39 @@ function Game(config) {
 	this.pinned = [];
 }
 
-Game.prototype.addPlayer(name) {
+Game.prototype.addPlayer = function(name) {
 	this.players = {name:name};
-}
+};
 
 Game.prototype.start = function() {
 	curPlayer = 0;
-}
+};
 
 Game.prototype.nextTurn = function() {
 
 };
 
 Game.prototype.roll = function() {
-	for (die in this.inPlay) {
-		die.roll()
+	if (this.inPlay.length > 0) {
+		for (die in this.inPlay) {
+			die.roll()
+		}
+		if (this.inPlay.length == 1)  {
+			this.pin(0);
+			this.endTurn();
+		}
+	} else {
+		this.endTurn();
 	}
 };
 
-Game.prototype.pin = function(die) {
+Game.prototype.endTurn = function() {
+	var score;
+	s = new Score();
+	score = s.calc(this.pinned);
 	
 }
+
+Game.prototype.pin = function(die) {
+	this.pinned.push(this.inPlay.splice(die, die));
+};
