@@ -15,15 +15,20 @@ function Game(config) {
 }
 
 Game.prototype.addPlayer = function (name) {
-	this.players = {name:name};
+	this.players.push(new Player(name));
 };
 
 Game.prototype.start = function () {
-	curPlayer = 0;
+	this.curPlayer = -1;
+	this.nextTurn();
 };
 
 Game.prototype.nextTurn = function () {
-
+	this.curPlayer++;
+	if (this.curPlayer >= this.players) {
+		this.curPlayer = 0;
+	}
+	this.players[this.curPlayer].turns.push(new Turn());
 };
 
 Game.prototype.roll = function() {
@@ -40,7 +45,7 @@ Game.prototype.roll = function() {
 	if (this.inPlay.length > 0) {
 		forEach(this.inPlay, function (d) {
 			d.roll();
-		}
+		});
 		if (this.inPlay.length == 1)  {
 			this.pin(0);
 			this.endTurn();

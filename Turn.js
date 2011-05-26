@@ -1,0 +1,3 @@
+function Turn() {
+	this.rolls = [];
+}
