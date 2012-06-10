@@ -9,3 +9,7 @@ function Die(config) {
 Die.prototype.roll = function () {
 	this.value = Math.floor(Math.random() * this.options.range[1]) + this.options.range[0];
 }
+
+Die.prototype.toString = function () {
+	return this.value
+}
